@@ -1,0 +1,234 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <title>Rock Paper Scissors</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-family: Arial Verdana sans-serif;
+        }
+        .bluebox {
+            background-color: #43609C;
+            width: 100%;
+            text-align: center;
+            color: white;
+        }
+        .bluebox h1 {
+            margin: 0;
+            padding: 0;
+        }
+        a,
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            float: left;
+            position: relative;
+            text-align: left;
+        }
+        .bluebox ul {
+            margin: 0;
+            padding: 0;
+            width: 900px;
+        }
+        .bluebox li {
+            list-style: none;
+            width: 33.33% text-align: center;
+            border-right: 1px solid white;
+            white-space: nowrap;
+        }
+        .bluebox ul {
+            display: table;
+            width: 100%;
+            padding: 15px 0px 15px 0px;
+            margin: 0;
+        }
+        .bluebox li {
+            display: table-cell;
+            width: 16.666666667%;
+            text-align: center;
+            border-right: 1px solid #fff;
+            font-size: 1.2em;
+        }
+        .game {
+            float: center;
+            position: relative;
+        }
+        .game ul {
+            display: table;
+            width: 100%;
+            padding: 15px 0px 15px 0px;
+            margin: 0;
+        }
+        .game li {
+            display: table-cell;
+            width: 16.666666667%;
+            text-align: center;
+            border-right: 1px solid #fff;
+            font-size: 1.2em;
+            width: 50px;
+            height: 50px;
+        }
+        .game img {
+            width: 100px;
+            height: 100px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #scorebox {
+            font-size: 3em;
+            text-align: center;
+        }
+        #refresh {
+            font-size: 1.2em;
+        }
+        #again {
+            margin-top: 20px;
+            text-align: center;
+        }
+        #rule {
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div class="bluebox">
+            <h1>
+			ROCK  <img src="images/rock.png" /> 
+			PAPER <img src="images/paper.png" /> 
+			SCISSORS  <img src="images/scissors.png" /> 
+			</h1>
+            <hr>
+            <p>
+                Choose a move (Rock/Paper/Scissors). The computer plays a move at random. If you both make the same move the game is tied.
+            </p>
+            <ul>
+                <li>Rock defeats Scissors</li>
+                <li>Scissors defeats Paper</li>
+                <li style="border-right:none">Paper defeats Rock</li>
+            </ul>
+        </div>
+        <h1>Choose your move:</h1>
+        <br>
+        <div class="game">
+            <ul>
+                <li id="rock"><img src="images/rock.png" /> </li>
+                <li id="paper"><img src="images/paper.png" /> </li>
+                <li id="scissor" style="border-right:none"><img src="images/scissors.png" /> </li>
+            </ul>
+        </div>
+        <div>
+            <h1>Computer's move:<img id="move" />
+		
+		</h1>
+
+            <div id="scorebox"></div>
+            <div id="again">
+                <button id="refresh">Play Again!!</button>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById("refresh")
+                .style.visibility = "hidden";
+            var moveArray = new Array();
+            moveArray[0] = "rock";
+            moveArray[1] = "paper";
+            moveArray[2] = "scissor";
+
+            var move = Math.floor(Math.random() * 4);
+            var result;
+
+            document.getElementById("rock")
+                .onclick = function () {
+                    document.getElementById("paper")
+                        .innerHTML = "";
+                    document.getElementById("scissor")
+                        .innerHTML = "";
+                    if (moveArray[move] == "rock")
+                        result = "tied";
+                    else if (moveArray[move] == "scissor")
+                        result = "won";
+                    else
+                        result = "lost";
+                    resulted(result, move);
+                }
+            document.getElementById("paper")
+                .onclick = function () {
+                    document.getElementById("rock")
+                        .innerHTML = "";
+                    document.getElementById("scissor")
+                        .innerHTML = "";
+                    if (moveArray[move] == "paper")
+                        result = "tied";
+                    else if (moveArray[move] == "rock")
+                        result = "won";
+                    else
+                        result = "lost";
+                    resulted(result, move);
+                }
+            document.getElementById("scissor")
+                .onclick = function () {
+                    document.getElementById("paper")
+                        .innerHTML = "";
+                    document.getElementById("rock")
+                        .innerHTML = "";
+                    if (moveArray[move] == "scissor")
+                        result = "tied";
+                    else if (moveArray[move] == "paper")
+                        result = "won";
+                    else
+                        result = "lost";
+                    resulted(result, move);
+                }
+
+            document.getElementById("refresh")
+                .onclick = function () {
+                    location.reload();
+                }
+
+            function resulted(result, move) {
+
+                if (move == 1)
+                    document.getElementById("move")
+                    .src = "images/paper.png";
+                else if (move == 0)
+                    document.getElementById("move")
+                    .src = "images/rock.png";
+                else
+                    document.getElementById("move")
+                    .src = "images/scissors.png";
+
+                if (result == "won")
+                    document.getElementById("scorebox")
+                    .innerHTML = "YOU WON";
+                else if (result == "tied")
+                    document.getElementById("scorebox")
+                    .innerHTML = "GAME TIED";
+                else
+                    document.getElementById("scorebox")
+                    .innerHTML = "YOU LOST";
+
+                document.getElementById("refresh")
+                    .style.visibility = "visible";
+
+            }
+
+        </script>
+</body>
+
+</html>
