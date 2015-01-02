@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Code Player</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <style>
+    
+    	body{
+    		margin:0;
+    		padding:0;
+    	}
+    	
+    	#topbar{
+    		background-color:#e0e0e0;
+    		float:left;
+    		width:100%;
+    		height:45px;
+    		padding:0;
+    		margin:0;
+    		border-bottom:2px solid grey;
+    	}	
+    	
+    	#topbar h1{
+    		margin:10px 0 7px 15px;
+    		font-size:1.1em;
+    		float:left;
+    		
+    	}
+    	
+    	#toggles {
+    		width:204px;
+    		margin:0 auto;
+    		list-style:none;
+    		border:1px solid grey;	
+    		border-radius:3px;
+    		padding:0;
+    		position:relative;
+    		height:30px;
+    		top:7px;
+    	}
+    	
+    	#toggles li{
+    		float:left;
+    		border-right:1px solid grey;
+    		padding:6px 7px;
+    	}
+    	
+    	#topbar input{
+    		position:relative;
+    		float:right;
+    		margin-left:0px;
+    		border-radius:5px;
+    		width:55px;
+    		font-size:1.1em;
+    		margin:7px 15px 5px 0;
+    	}
+        
+        #wrapper {
+            margin: 0 auto;
+            font-family: Helvetica;
+        }
+        
+        .clear{
+        	clear:both;
+        }
+        
+        .codeContainer{
+        	float:left;
+        	width:50%;
+        	height:100%;
+        	position:relative;
+        }
+        
+        #htmlContainer{
+        
+        }
+        
+        textarea{
+        	width:100%;
+        	height:100%;
+        	border:none;
+        	border-right:1px solid grey;
+        	font-size:1.3em;
+        	font-family:monotype;
+        	padding-top:50px;
+        }
+        
+        .codeLabel
+        {
+        	position:absolute;
+        	float:right;
+        	top:10px;
+        	right:10px;
+        	
+        	
+        }
+        
+        #jsContainer
+        {
+        	display:none;
+        }
+        #cssContainer
+        {
+        	display:none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div id="wrapper">
+		<div id="topbar">
+			<h1>CodePlayer</h1>
+			<input type="submit" value="Run" />
+			<ul id="toggles">
+				<li>HTML</li>
+				<li>CSS</li>
+				<li>JS</li>
+				<li style="border-right:0px">Result</li>
+			</ul>	
+		</div>
+		
+		<div class="clear">
+		
+		<div class="codeContainer" id="htmlContainer">
+			
+			<div class="codeLabel">HTML</div>
+			<textarea>Example Code </textarea>
+			
+		</div>
+		
+		<div class="codeContainer" id="cssContainer">
+			
+			<div class="codeLabel">CSS</div>
+			<textarea>Example Code </textarea>
+			
+		</div>
+		
+		<div class="codeContainer" id="jsContainer">
+			
+			<div class="codeLabel">JS</div>
+			<textarea>Example Code </textarea>
+			
+		</div>
+		
+		<div class="codeContainer" id="resultContainer">
+			
+			<div class="codeLabel">Result</div>
+			
+		</div>
+		
+		
+		
+    </div>
+
+
+     <script>
+           
+           var windowHeight=$(window).height();
+           var topbarHeight=$("#topbar").height();
+           	
+           $(".codeContainer").height(windowHeight-topbarHeight);   
+  
+
+    </script>
+
+</body>
+
+</html>
